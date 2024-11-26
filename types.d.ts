@@ -28,6 +28,13 @@ export interface MarkdownKatexOptions {
     readonly enableFencedBlocks?: boolean;
 
     /**
+     * Enable rendering of of bare latex blocks of display mode.
+     * \[...\]
+     * \(...\)
+     */
+    readonly enableMathBlockLatex?: boolean;
+
+    /**
      * Controls if an exception is thrown on katex errors.
      */
     readonly throwOnError?: boolean;

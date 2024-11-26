@@ -632,8 +632,10 @@ export default function (md: import('markdown-it'), options?: MarkdownKatexOptio
         } catch (error) {
             if (options?.throwOnError) {
                 console.log(error);
+                return `<span class="katex-error" title="${escapeHtml(latex)}">${escapeHtml(error + '')}</span>`;
+            } else {
+                return latex;
             }
-            return `<span class="katex-error" title="${escapeHtml(latex)}">${escapeHtml(error + '')}</span>`;
         }
     };
 
@@ -647,8 +649,10 @@ export default function (md: import('markdown-it'), options?: MarkdownKatexOptio
         } catch (error) {
             if (options?.throwOnError) {
                 console.log(error);
+                return `<p class="katex-block katex-error" title="${escapeHtml(latex)}">${escapeHtml(error + '')}</p>`;
+            } else {
+                return latex;
             }
-            return `<p class="katex-block katex-error" title="${escapeHtml(latex)}">${escapeHtml(error + '')}</p>`;
         }
     }
 

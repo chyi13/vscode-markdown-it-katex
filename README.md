@@ -1,5 +1,7 @@
 # Markdown-it Katex
 
+> Add square brackets \\[...\\] and parentheses \\(...\\) support
+
 Markdown it plugin that adds [KaTeX](https://github.com/Khan/KaTeX) rendering. This is used by VS Code to render math in markdown.
 
 Need convincing?
@@ -19,19 +21,23 @@ npm install markdown-it
 Install the plugin
 
 ```bash
-npm install @vscode/markdown-it-katex
+npm install @chyi13/markdown-it-katex
 ```
 
 Use it in your javascript
 
 ```javascript
 var md = require('markdown-it')(),
-    mk = require('@vscode/markdown-it-katex').default;
+    mk = require('@chyi13/markdown-it-katex').default;
 
-md.use(mk);
+// enableMathBlockLatex to enable square brackets \\[...\\] and parentheses \\(...\\) support
+md.use(mk, { enableMathBlockLatex: true });
 
 // double backslash is required for javascript strings, but not html input
 var result = md.render('# Math Rulez! \n  $\\sqrt{3x-1}+(1+x)^2$');
+
+// square brackets \\[...\\] and parentheses \\(...\\)
+var result = md.render('\\[\n\\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{j} + \\mu_0 \\varepsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}\n\\]');
 ```
 
 Include the KaTeX stylesheet in your html:

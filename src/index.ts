@@ -313,6 +313,11 @@ function blockBareLatex(state: StateBlock, start: number, end: number, silent: b
         }
     }
 
+    // Do not try to render if closing \\] not found 
+    if (!found) {
+        return false;
+    }
+
     state.line = next + 1;
 
     token = state.push('math_block', 'math', 0);
